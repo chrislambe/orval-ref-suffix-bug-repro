@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: Bug Repro
+  version: 1.0.0
+paths:
+  /items:
+    get:
+      operationId: getItems
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      oneOf:
+                        - $ref: '#/components/schemas/TypeA'
+                        - $ref: '#/components/schemas/TypeB'
+components:
+  schemas:
+    TypeA:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          const: A
+        name:
+          type: string
+    TypeB:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          const: B
+        value:
+          type: number

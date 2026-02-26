@@ -1,0 +1,18 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index b0b00807785ae175c67161610fea5f15ec2bd82c..3688f652c8797e2b8cdc671d972311adfe78c7b3 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -422,11 +422,11 @@ function getNullable(value, nullable) {
+ }
+ function resolveMockValue({ schema, mockOptions, operationId, tags, combine, context, imports, existingReferencedProperties, splitMockImplementations, allowOverride }) {
+ 	if (isReference(schema)) {
+-		const { originalName, refPaths } = getRefInfo(schema.$ref, context);
++		const { name, refPaths } = getRefInfo(schema.$ref, context);
+ 		const schemaRef = Array.isArray(refPaths) ? prop(context.spec, ...refPaths) : void 0;
+ 		const newSchema = {
+ 			...schemaRef,
+-			name: pascal(originalName),
++			name,
+ 			path: schema.path,
+ 			isRef: true,
+ 			required: [...schemaRef?.required ?? [], ...schema.required ?? []],

@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "axios": "^1.13.5",
+    "msw": "^2.12.10",
+    "orval": "^8.5.0",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@orval/mock": "patches/@orval__mock.patch"
+    }
+  }
+}
